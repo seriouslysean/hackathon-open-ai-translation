@@ -1,11 +1,13 @@
 <template>
     <header class="site-header container">
         <small class="site-header__prefix">URBN Hackathon</small>
-        <h1 class="site-header__heading">SEO Tooling</h1>
+        <h1 class="site-header__heading">
+            SEO Transl<span class="ai"><span class="a">a</span><span class="i">i</span></span>tions
+        </h1>
     </header>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .site-header {
   text-align: center;
 
@@ -20,12 +22,21 @@
         line-height: 1em;
         margin-top: 0.25em;
         font-size: 3em;
-        background: linear-gradient(#666, #666, #000);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
         // force text descenders to show
         padding: 0.25em;
+        position: relative;
+        text-transform: uppercase;
+        text-shadow: 0 3px 5px var(--bg-secondary);
+    }
+
+    &__heading .ai {
+        letter-spacing: 0;
+    }
+    &__heading .a {
+        color: var(--bg-secondary);
+    }
+    &__heading .i {
+        color: var(--bg-secondary);
     }
 }
 </style>

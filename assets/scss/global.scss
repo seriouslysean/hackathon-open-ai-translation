@@ -21,9 +21,12 @@ body {
   font-size: var(--font-size-body);
 }
 
-label {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-size: var(--font-size-heading);
+}
+
+label {
   display: block;
   margin: var(--spacer-secondary) 0;
   width: 100%;
