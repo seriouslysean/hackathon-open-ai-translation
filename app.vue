@@ -1,3 +1,14 @@
+<script setup>
+const nuxtApp = useNuxtApp();
+const loading = ref(false);
+nuxtApp.hook('page:start', () => {
+  loading.value = true;
+});
+nuxtApp.hook('page:finish', () => {
+  loading.value = false;
+});
+</script>
+
 <template>
   <div class="app">
     <SiteHeader />
@@ -6,6 +17,8 @@
       <TextTranslate class="main__column main__column--translate" />
       <TextGenerate class="main__column main__column--generate" />
     </main>
+
+    <SiteLoader v-if="loading" />
   </div>
 </template>
 

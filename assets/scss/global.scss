@@ -72,4 +72,43 @@ textarea {
   margin: 1em;
   box-shadow: -2px 19px 39px -5px rgba(0, 0, 0, 0.52);
   -webkit-box-shadow: -2px 19px 39px -5px rgba(0, 0, 0, 0.52);
+  position: relative;
+
+  &::before {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(255, 255, 255, 75%);
+    cursor: wait;
+  }
+
+  &::after {
+    content: "⏳";
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    z-index: 15;
+    font-size: 4em;
+    animation: rotate 2s infinite;
+  }
+
+  &__loading::before,
+  &__loading::after {
+    display: block;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-45deg)
+  }
+  100% {
+    transform: rotate(45deg)
+  }
 }

@@ -8,6 +8,7 @@ const languages = ref([
   { name: 'Spanish (es-ES)', locale: 'es-ES' },
 ]);
 
+const loading = ref(false);
 const text = ref('');
 const locale = ref('');
 const translation = ref('');
@@ -17,6 +18,8 @@ async function onSubmit() {
     alert('Text and locale required');
     return;
   }
+  // TODO Convert to use pending maybe? Or some sort of global loader state?
+  loading.value = true;
   // TODO Convert to composable maybe `useTranslation(text, locale)`
   const { data: translatedText } = await useFetch('/api/translate', {
     method: 'post',
@@ -25,6 +28,7 @@ async function onSubmit() {
       locale,
     },
   });
+  loading.value = false;
   translation.value = translatedText.value || '';
 }
 
@@ -39,7 +43,9 @@ function onCopy() {
 
 
 <template>
-  <section class="text-translate container">
+  <section class="text-translate container" :class="{
+    'container__loading': loading === true,
+  }">
     <h2 class="text-translate__heading">Translate Text</h2>
     <form @submit.prevent="onSubmit">
         <label for="translate-text">Text (in English)</label>

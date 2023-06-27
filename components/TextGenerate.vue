@@ -1,4 +1,5 @@
 <script setup>
+const loading = ref(false);
 const url = ref('');
 // const keywords = ref('');
 const seoTitle = ref('');
@@ -10,6 +11,8 @@ async function onSubmit() {
     alert('URL required');
     return;
   }
+  // TODO Convert to use pending maybe? Or some sort of global loader state?
+  loading.value = true;
   // TODO Convert to composable maybe `useGenerate(url)`
   const { data: response } = await useFetch('/api/generate', {
     method: 'post',
@@ -17,7 +20,7 @@ async function onSubmit() {
       url,
     },
   });
-  debugger;
+  loading.value = false;
   seoTitle.value = response.value?.title || '';
   seoDescription.value = response.value?.description || '';
   seoCopy.value = response.value?.seoCopy || '';
@@ -27,7 +30,9 @@ const hasTranslations = computed(() => !!seoTitle.value || !!seoDescription.valu
 
 
 <template>
-    <section class="text-generate container">
+    <section class="text-generate container" :class="{
+        'container__loading': loading === true,
+    }">
         <h2 class="text-generate__heading">Generate SEO Content</h2>
         <form @submit.prevent="onSubmit">
             <label for="generate-url">Page URL</label>
