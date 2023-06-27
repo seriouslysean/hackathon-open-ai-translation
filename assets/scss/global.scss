@@ -1,0 +1,68 @@
+@use '@/assets/scss/_reset.scss';
+@use '@/assets/scss/_colors.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
+
+html {
+  background: #000;
+  background-image: linear-gradient(
+    var(--bg-primary),
+    var(--bg-primary),
+    var(--bg-primary),
+    var(--bg-secondary)
+  );
+  height: 100%;
+  font-size: 20px;
+}
+
+body {
+  padding: var(--spacer-primary);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+}
+
+label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-heading);
+  display: block;
+  margin: var(--spacer-secondary) 0;
+  width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  display: block;
+  margin: var(--spacer-secondary) 0;
+  width: 100%;
+  border: 1px solid var(--bg-outline);
+  min-height: 3em;
+}
+
+input,
+textarea {
+  padding: var(--spacer-secondary) var(--spacer-secondary);
+}
+
+textarea {
+  display: block;
+  margin: var(--spacer-secondary) 0;
+  padding: var(--spacer-secondary) var(--spacer-secondary);
+  width: 100%;
+  min-height: 6em;
+}
+
+.buttons {
+  display: flex;
+  column-gap: 1em;
+  margin-top: var(--spacer-secondary);
+}
+
+.container {
+  background: var(--bg-tertiary);
+  padding: var(--spacer-primary);
+  margin: 1em;
+  box-shadow: -2px 19px 39px -5px rgba(0, 0, 0, 0.52);
+  -webkit-box-shadow: -2px 19px 39px -5px rgba(0, 0, 0, 0.52);
+}
