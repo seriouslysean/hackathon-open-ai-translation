@@ -25,11 +25,7 @@ async function onSubmit() {
       locale,
     },
   });
-  translation.value = translatedText.value;
-}
-
-async function onSubmitURL() {
-  alert('url submit');
+  translation.value = translatedText.value || '';
 }
 
 function onCopy() {
@@ -39,16 +35,6 @@ function onCopy() {
   }
   navigator.clipboard.writeText(translation.value);
 }
-
-function onCopyURL() {
-  if (location.protocol !== 'https:') {
-    alert('Copy will only work over https');
-    return;
-  }
-
-  alert('copy url not built yet');
-  navigator.clipboard.writeText('TODO');
-}
 </script>
 
 
@@ -57,7 +43,7 @@ function onCopyURL() {
     <h2 class="text-translate__heading">Translate Text</h2>
     <form @submit.prevent="onSubmit">
         <label for="translate-text">Text (in English)</label>
-        <textarea type="text" name="translate-text" v-model="text"></textarea>
+        <textarea name="translate-text" v-model="text"></textarea>
 
         <label for="translate-locale">Translate To</label>
         <select name="translate-locale" v-model="locale">
@@ -81,7 +67,8 @@ function onCopyURL() {
           <textarea
             name="translate-text-translated"
             class="text-translate__translation-text"
-            readonly>{{ translation }}</textarea>
+            readonly
+            v-model="translation"></textarea>
           <div class="buttons">
             <button @click="onCopy">Copy Translation</button>
           </div>
