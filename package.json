@@ -12,6 +12,7 @@
     "@nuxt/devtools": "^0.6.4",
     "@types/node": "^18",
     "nuxt": "^3.6.0",
+    "sass": "^1.63.6",
     "typescript": "^5.0.4"
   },
   "dependencies": {

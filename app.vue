@@ -3,7 +3,7 @@
 // import custom from './custom.css?inline'
 
 const languages = ref([
-  { name: 'Choose Locale', locale: '' },
+  { name: 'Choose Locale', locale: '', selected: true },
   { name: 'English (en-GB)', locale: 'en-GB' },
   { name: 'French (fr-CA)', locale: 'fr-CA' },
   { name: 'German (de-DA)', locale: 'de-DE' },
@@ -48,38 +48,54 @@ onMounted(() => {
 
 <template>
   <div class="app">
-    <h1>URBN Hackathon SEO Translations</h1>
+    <SiteHeader />
 
-    <form @submit.prevent="onSubmit">
-      <div class="row">
-        <label for="text">Text (in English)</label>
-        <input ref="textEl" type="text" name="text" v-model="text" />
-      </div>
+    <main class="main container">
+      <!-- translate -->
+      <section class="translation">
+        <form @submit.prevent="onSubmit">
+          <label for="text">Text (in English)</label>
+          <textarea ref="textEl" type="text" name="text" v-model="text"></textarea>
 
-      <div class="row">
-        <label for="locale">Translate To</label>
-        <select name="locale" v-model="locale">
-          <option v-for="language in languages" :key="language.locale" :value="language.locale" :selected="locale">
-            {{ language.name }}
-          </option>
-        </select>
-      </div>
+          <label for="locale">Translate To</label>
+          <select name="locale" v-model="locale">
+            <option v-for="language in languages" :key="language.locale" :value="language.locale" :selected="language.selected">
+              {{ language.name }}
+            </option>
+          </select>
 
-      <div class="row">
-        <button style="margin-right: 20px" type="submit">Submit</button>
-        <button class="resetbutton" type="reset">Reset</button>
-      </div>
-    </form>
+          <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
 
-    <hr>
+        <div class="translation" v-if="translation">
+          <label for="text-translated">Translation</label>
+          <textarea name="text-translated" class="text-translated" readonly>{{ translation }}</textarea>
+          <div class="buttons">
+            <button @click="onCopy">Copy</button>
+          </div>
+        </div>
+      </section>
 
-    <textarea readonly>{{ translation }}</textarea>
-    <button @click="onCopy">Copy</button>
+      <!-- translate -->
+      <section class="generation">
+        TODO GENERATION
+      </section>
+    </main>
   </div>
 </template>
 
-<style>
-label {
-  display: block;
+<style lang="scss">
+@use "~/assets/scss/global.scss";
+
+.translation {
+  border-top: 2px dotted var(--bg-outline);
+  margin-top: var(--spacer-primary);
+}
+
+.text-translated {
+  margin-bottom: var(--spacer-secondary);
 }
 </style>
