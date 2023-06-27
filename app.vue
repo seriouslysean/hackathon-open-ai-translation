@@ -1,7 +1,4 @@
 <script setup>
-// import styles from './global.css?inline'
-// import custom from './custom.css?inline'
-
 const languages = ref([
   { name: 'Choose Locale', locale: '', selected: true },
   { name: 'English (en-GB)', locale: 'en-GB' },
@@ -32,12 +29,26 @@ async function onSubmit() {
   translation.value = translatedText.value;
 }
 
+async function onSubmitURL() {
+  alert('url submit');
+}
+
 function onCopy() {
   if (location.protocol !== 'https:') {
     alert('Copy will only work over https');
     return;
   }
   navigator.clipboard.writeText(translation.value);
+}
+
+function onCopyURL() {
+  if (location.protocol !== 'https:') {
+    alert('Copy will only work over https');
+    return;
+  }
+
+  alert('copy url not built yet');
+  navigator.clipboard.writeText('TODO');
 }
 
 onMounted(() => {
@@ -79,9 +90,28 @@ onMounted(() => {
         </div>
       </section>
 
+      <hr />
+
       <!-- translate -->
       <section class="generation">
-        TODO GENERATION
+          <form @submit.prevent="onSubmitURL">
+            <label for="url">URL Title Generator</label>
+            <textarea ref="url" type="text" name="text" v-model="url"></textarea>
+
+            <label for="keywords">Keywords</label>
+            <textarea ref="keywords" type="text" name="text" v-model="keywords"></textarea>
+
+            <div class="buttons">
+              <button type="submit">Submit</button>
+              <button type="reset">Reset</button>
+            </div>
+
+            <label for="text-translated">URL output</label>
+            <textarea name="text-translated" class="text-translated" readonly>{{ translation }}</textarea>
+            <div class="buttons">
+              <button @click="onCopyURL">Copy Title</button>
+            </div>
+          </form>
       </section>
     </main>
   </div>
@@ -89,6 +119,11 @@ onMounted(() => {
 
 <style lang="scss">
 @use "~/assets/scss/global.scss";
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
 
 .translation {
   border-top: 2px dotted var(--bg-outline);
