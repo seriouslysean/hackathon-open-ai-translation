@@ -39,7 +39,7 @@ textarea {
   display: block;
   margin: var(--spacer-secondary) 0;
   width: 100%;
-  border: 1px solid var(--bg-outline);
+  border: 1px solid var(--outline);
   min-height: 3em;
 }
 
@@ -63,7 +63,7 @@ textarea {
 }
 
 .container {
-  background: var(--bg-tertiary);
+  background: var(--color-light);
   padding: var(--spacer-primary);
   margin: 1em;
   box-shadow: -2px 19px 39px -5px rgba(0, 0, 0, 0.52);

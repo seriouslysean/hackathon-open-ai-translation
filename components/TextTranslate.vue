@@ -92,7 +92,7 @@ function onCopyURL() {
 <style lang="scss">
 .text-translate {
     &__heading {
-      color: var(--color-secondary);
+      color: var(--font-heading-color);
       text-align: center;
     }
 

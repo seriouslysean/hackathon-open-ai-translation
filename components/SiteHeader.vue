@@ -12,6 +12,7 @@
   text-align: center;
 
     &__prefix {
+        color: var(--font-heading-color);
         letter-spacing: 0.5em;
         text-transform: uppercase;
     }
