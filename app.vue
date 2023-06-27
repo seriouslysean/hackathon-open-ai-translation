@@ -1,4 +1,7 @@
 <script setup>
+// import styles from './global.css?inline'
+// import custom from './custom.css?inline'
+
 const languages = ref([
   { name: 'Choose Locale', locale: '' },
   { name: 'English (en-GB)', locale: 'en-GB' },
@@ -42,6 +45,7 @@ onMounted(() => {
 });
 </script>
 
+
 <template>
   <div class="app">
     <h1>URBN Hackathon SEO Translations</h1>
@@ -62,8 +66,8 @@ onMounted(() => {
       </div>
 
       <div class="row">
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <button style="margin-right: 20px" type="submit">Submit</button>
+        <button class="resetbutton" type="reset">Reset</button>
       </div>
     </form>
 
