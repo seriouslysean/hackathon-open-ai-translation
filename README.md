@@ -1,3 +1,5 @@
+![SEO TranslAItions Logo](./assets/images/logo-seo-translAItions.png)
+
 # SEO TranslAItions
 
 URBN 2023 Hackathon entry. Translate text from English to another Language using AI, or generate brand new SEO content. Ultimately this will replace a very manual process by automating the generation and translation of text when content is saved via CMS.
