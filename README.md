@@ -1,20 +1,16 @@
-# Nuxt 3 Minimal Starter
+# SEO TranslAItions
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+URBN 2023 Hackathon entry. Translate text from English to another Language using AI, or generate brand new SEO content. Ultimately this will replace a very manual process by automating the generation and translation of text when content is saved via CMS.
 
 ## Setup
 
-Make sure to install the dependencies:
+1. Add a `.env` file using `.env.example` as a template.
+2. Add your OpenAI API key to `OPENAI_API_KEY`
+   - [Generate one](https://platform.openai.com/account/api-keys) if needed
+3. Install the dependencies:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
+npm ci
 ```
 
 ## Development Server
@@ -22,42 +18,5 @@ yarn install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
